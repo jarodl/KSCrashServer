@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+    <head>
+    {% block head %}
+        <title>KSCrash</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/master.css') }}" type="text/css" media="screen" charset="utf-8">
+    {% endblock %}
+    {% block scripts %}
+    {% endblock %}
+    </head>
+    <body>
+        <div class='inner'>
+            <div id="header" class='clearfix'>
+                <div id="logo" class="left">
+                    <h1>{% block title %}{% endblock %}&nbsp;<span class='tagline'>{% block tagline %}{% endblock %}</span></h1>
+                </div>
+                <div class='right'>
+                    <p>{% block link_back %}{% endblock %}</p>
+                </div>
+            </div>
+        </div>
+        <div class='inner-wide'>
+        </div>
+        <div class='inner'>
+            <div id="content">
+                {% block content %}
+                {% endblock %}
+            </div>
+            <div id="footer">
+                {% block footer %}
+                {% endblock %}
+            </div>
+        </div>
+        {% block bottom_scripts %}
+        {% endblock %}
+        {% block templates %}
+        {% endblock %}
+    </body>
+</html>
+
