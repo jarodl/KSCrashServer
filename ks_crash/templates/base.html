@@ -1,34 +1,29 @@
 <!doctype html>
-<html>
+<html lang="en">
     <head>
     {% block head %}
         <title>KSCrash</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}" type="text/css" media="screen" charset="utf-8">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-responsive.min.css') }}" type="text/css" media="screen" charset="utf-8">
         <link rel="stylesheet" href="{{ url_for('static', filename='css/master.css') }}" type="text/css" media="screen" charset="utf-8">
     {% endblock %}
     {% block scripts %}
     {% endblock %}
     </head>
     <body>
-        <div class='inner'>
-            <div id="header" class='clearfix'>
-                <div id="logo" class="left">
-                    <h1>{% block title %}{% endblock %}&nbsp;<span class='tagline'>{% block tagline %}{% endblock %}</span></h1>
+        <div class='container'>
+            <h1>KSCrash</h1>
+            <div class='inner'>
+                <div id="content">
+                    {% block content %}
+                    {% endblock %}
                 </div>
-                <div class='right'>
-                    <p>{% block link_back %}{% endblock %}</p>
+                <div id="footer">
+                    {% block footer %}
+                        <p>source found on <a href='http://github.com/kstenerud/KSCrash'>github</a></p>
+                    {% endblock %}
                 </div>
-            </div>
-        </div>
-        <div class='inner-wide'>
-        </div>
-        <div class='inner'>
-            <div id="content">
-                {% block content %}
-                {% endblock %}
-            </div>
-            <div id="footer">
-                {% block footer %}
-                {% endblock %}
             </div>
         </div>
         {% block bottom_scripts %}
