@@ -42,6 +42,11 @@ def reports():
     reports = [report.__dict__ for report in reports]
     return jsonify(reports=reports)
 
+@app.route('/api/reports/<crash_id>.json', methods=['GET'])
+def report(crash_id):
+    report = Report.get(crash_id)
+    return jsonify(report=report.__dict__)
+
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 8000))
     http_server = WSGIServer(('', port), app)
