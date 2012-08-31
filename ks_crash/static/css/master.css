@@ -5,3 +5,15 @@
 #footer {
     text-align: center;
 }
+
+pre {
+    font-size: .7em;
+}
+
+table, .table {
+    margin-bottom: 0px;
+}
+
+.report {
+    margin-bottom: 20px;
+}

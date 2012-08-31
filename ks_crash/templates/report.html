@@ -1,0 +1,38 @@
+<div class="accordion-heading">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    ID
+                </th>
+                <th>
+                    Time
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <%= crash_id %>
+                </td>
+                <td>
+                    <%= timestamp %>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <a class="accordion-toggle btn" data-toggle="collapse" data-parent="#reports" href="#collapse-<%= crash_id %>">
+                    Full Report
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div id="collapse-<%= crash_id %>" class="accordion-body collapse" style="height: 0px; ">
+    <div class="accordion-inner">
+        <pre class="pre-scrollable">
+            <%= content %>
+        </pre>
+    </div>
+</div>

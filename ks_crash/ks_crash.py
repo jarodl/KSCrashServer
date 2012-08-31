@@ -1,8 +1,12 @@
 import os
 import json
 
-from flask import Flask
+from flask import Flask, jsonify
 from flask import render_template, redirect, url_for, request
+
+from gevent.pywsgi import WSGIServer
+from juggernaut import Juggernaut
+
 from models.report import Report
 
 def create_app():
@@ -12,10 +16,11 @@ app = create_app()
 app.debug = True
 app.config.from_pyfile("config.py")
 
+jug = Juggernaut()
+
 @app.route('/')
 def index():
-    reports = Report.all()
-    return render_template('index.html', reports=reports)
+    return render_template('reports.html')
 
 @app.route('/api/crashes/', methods=['POST'])
 def crashes():
@@ -24,11 +29,20 @@ def crashes():
         reports = json.loads(json_file.read())
         for report_dict in reports:
             crash_id = report_dict['crash_id']
-            report = Report(crash_id, report_dict)
-            report.save()
-        return reports.__str__()
+            if Report.get(crash_id) is None:
+                report = Report(crash_id, report_dict)
+                report.save()
+                jug.publish('report-channel', report.__dict__)
+        return jsonify(success=True)
     return redirect(url_for('index'))
+
+@app.route('/api/reports.json', methods=['GET'])
+def reports():
+    reports = Report.all()
+    reports = [report.__dict__ for report in reports]
+    return jsonify(reports=reports)
 
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 8000))
-    app.run(host='0.0.0.0', port=port)
+    http_server = WSGIServer(('', port), app)
+    http_server.serve_forever()

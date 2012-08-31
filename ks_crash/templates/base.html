@@ -4,11 +4,18 @@
     {% block head %}
         <title>KSCrash</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.js') }}"></script>
         <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}" type="text/css" media="screen" charset="utf-8">
         <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-responsive.min.css') }}" type="text/css" media="screen" charset="utf-8">
         <link rel="stylesheet" href="{{ url_for('static', filename='css/master.css') }}" type="text/css" media="screen" charset="utf-8">
     {% endblock %}
     {% block scripts %}
+        <script type="text/javascript" src="http://localhost:8080/application.js"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='js/underscore.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='js/backbone.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='js/isotope.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='js/ks_crash.js') }}"></script>
     {% endblock %}
     </head>
     <body>
