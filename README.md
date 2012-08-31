@@ -1,7 +1,7 @@
 KSCrashServer
 =============
 
-This is an example server-side API for KSCrash.
+This is an example server-side API for [KSCrash](http://github.com/kstenerud/KSCrash).
 
 ## Set up
 
