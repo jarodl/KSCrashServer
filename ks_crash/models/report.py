@@ -1,8 +1,10 @@
-from redis import Redis
+import os
 import json
+import redis
 
 class BaseItem(object):
-    _redis = Redis()
+    redis_url = os.getenv('REDISTOGO_URL', 'redis://localhost')
+    _redis = redis.Redis(host=redis_url, port=6379)
 
     def __init__(self, ident, object_id=None):
         self.name = self.__class__.__name__
