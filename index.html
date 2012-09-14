@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>KSCrashServer by jarodl</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>KSCrashServer</h1>
+        <p>This is an example server-side API for KSCrash</p>
+
+        <p class="view"><a href="https://github.com/jarodl/KSCrashServer">View the Project on GitHub <small>jarodl/KSCrashServer</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/jarodl/KSCrashServer/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/jarodl/KSCrashServer/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/jarodl/KSCrashServer">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>KSCrashServer</h1>
+
+<p>This is an example server-side API for <a href="http://github.com/kstenerud/KSCrash">KSCrash</a>.</p>
+
+<h2>Set up</h2>
+
+<pre><code>mkvirtualenv ks_crash
+
+# needed for gevent
+brew install libevent
+# needed for juggernaut
+brew install redis
+
+npm install -g juggernaut
+
+pip install -r requirements.txt
+
+gem install foreman
+
+# start redis
+redis-server
+
+# start juggernaut
+juggernaut
+
+# start sonar
+foreman start
+</code></pre>
+
+<h2>Usage</h2>
+
+<ol>
+<li>Start redis with <code>redis-server</code>
+</li>
+<li>Start Juggernaut by running <code>juggernaut</code>
+</li>
+<li>Run <code>foreman start</code>
+</li>
+<li>Navigate to <a href="http://localhost:8000/">http://localhost:8000/</a>
+</li>
+<li>Send a few crash reports from the simulator using the included CrashTester app</li>
+</ol><h2>API</h2>
+
+<p>Right now there are two end points for the API</p>
+
+<p><em>Return all reports:</em></p>
+
+<pre><code>/api/reports.json
+</code></pre>
+
+<p><em>Return a single report using the <code>crash_id</code>:</em></p>
+
+<pre><code>/api/reports/&lt;crash_id&gt;.json
+</code></pre>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/jarodl">jarodl</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
