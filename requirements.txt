@@ -4,3 +4,4 @@ redis==2.4.12
 gevent==0.13.7
 juggernaut==0.2
 Flask-Script==0.4.0
+rbase==0.1.3
